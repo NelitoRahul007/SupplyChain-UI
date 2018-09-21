@@ -321,10 +321,12 @@ span.navbar-text p {
 }
 .banner-bottom {
        position: absolute;
-    width: 80%;
-    left: 10%;
+    width: 45%;
+    height:70%;
+    left: 28%;
     bottom: -30%;
     z-index: 999;
+    opacity: 0.8;
     background: #fff;
     padding: 2em;
 	box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 30px;
