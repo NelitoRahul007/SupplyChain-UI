@@ -134,11 +134,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								console.log("username----->",username)
 								if (username === "man@123.com"){
 								window.location.assign("file:///home/administrator/Desktop/HTMLWorkspace/SupplyChainUi/web/manufacturehome.html")
-							    } else {
-									alert("Name Or Password Incorrect")
+							    } else if (username === "dis@123.com") {
+								window.location.assign("file:///home/administrator/Desktop/HTMLWorkspace/SupplyChainUi/web/distributerhome.html")
+								} else if (username === "ret@123.com"){
+								window.location.assign("file:///home/administrator/Desktop/HTMLWorkspace/SupplyChainUi/web/retailerhome.html")
+								} else {
+									alert("User Id or Password Wrong")
 								}
 							}
 							</script>
+							
 					  </form>
 					  																																																																																										
 					</div>
@@ -893,8 +898,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   position: relative;
   z-index: 1;
   background: black;
-  /* opacity: 0.8; */
-  /* filter: alpha(opacity=50); For IE8 and earlier */
+  opacity: 0.8;
+   filter: alpha(opacity=50); /* 
+   For IE8 and earlier  */
   max-width: 360px;
   margin: 0 auto 100px;
   padding: 45px;
