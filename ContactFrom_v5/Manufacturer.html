@@ -47,34 +47,34 @@
 					<span class="label-input100">Reciever *</span>
 					<input class="input100" type="text" name="phone" placeholder="Enter RecieverId">
 				</div> -->
-				<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "1234xxxx">
+				<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" >
 					<span class="label-input100">Product Code *</span>
-					<input class="input100" type="text" name="email" placeholder="Product Code ">
+					<input class="input100" type="text"  placeholder="Product Code " id="productcode" >
 				</div>
-				<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "1234xxxx">
+				<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" >
 					<span class="label-input100">Batch Number *</span>
-					<input class="input100" type="text" name="email" placeholder=" Batch Number">
+					<input class="input100" type="text"  placeholder=" Batch Number" id="batchnumber" >
 				</div>
 
 				<div class="wrap-input100 bg1 rs1-wrap-input100">
 					<span class="label-input100">Year of Manufacture</span>
-					<input class="input100" type="text" name="phone" placeholder="Year of Manufacture">
+					<input class="input100" type="text"  placeholder="Year of Manufacture" id="yearofmanufacture" >
 				</div>
 				<!-- <div class="wrap-input100 bg1 rs1-wrap-input100">
 					<span class="label-input100">Transfer Date/Time</span>
 					<input class="input100" type="text" name="phone" placeholder="Transfer Date/Time">
 				</div> -->
-				<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Enter Your Email (e@a.x)">
+				<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" >
 					<span class="label-input100">Quantity *</span>
-					<input class="input100" type="text" name="email" placeholder="Quantity ">
+					<input class="input100" type="text"  placeholder="Quantity " id="quantity" >
 				</div>
 				<div class="wrap-input100 bg1 rs1-wrap-input100">
 					<span class="label-input100">Weight</span>
-					<input class="input100" type="text" name="phone" placeholder="Weight">
+					<input class="input100" type="text"  placeholder="Weight" id="weight" >
 				</div>
-				<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Enter Your Email (e@a.x)">
+				<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" >
 					<span class="label-input100">Aknowledge *</span>
-					<input class="input100" type="text" name="email" placeholder="Aknowledge ">
+					<input class="input100" type="text"  placeholder="Aknowledge " id="acknowledge">
 				</div>
 				<div class="w-full dis-none js-show-service">
 					<!-- <div class="wrap-contact100-form-radio">
@@ -97,7 +97,8 @@
 						<div class="contact100-form-radio">
 							<input class="input-radio100" id="radio3" type="radio" name="type-product" value="service">
 							<label class="label-radio100" for="radio3">
-								Services Consulting
+						  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>		Services Consulting
 							</label>
 						</div>
 					</div> -->
@@ -120,7 +121,7 @@
 				
 				
 				<div class="container-contact100-form-btn">
-					<button class="contact100-form-btn" onclick="myFunction()">
+					<button class="contact100-form-btn" id="submit">
 						<span>
 							Submitttt
 							<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
@@ -130,15 +131,57 @@
 			</form>
 		</div>
 	</div>
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script>
-			function myFunction() {
-			  alert("gagagagva")
+		$(document).ready(function() {
+			console.log($.fn.jquery)
+   $("#submit").click(function() {
+	   console.log($.fn.jquery)
+	   console.log("hitting---->")
+				var productcode = $("#productcode").val();
+				console.log("productcode---->", productcode)
+				var batchnumber = $("#batchnumber").val();
+				console.log("batchnumber---->", batchnumber)
+				var yearofmanufacture = $("#yearofmanufacture").val();
+				console.log("yearofmanufacture---->", yearofmanufacture)
+				var quantity = $("#quantity").val();
+				console.log("quantity---->", quantity)
+				var weight = $("#weight").val();
+				console.log("weight---->", weight)
+				var acknowledge = $("#acknowledge").val();
+				console.log("acknowledge---->", acknowledge)
+			 	var datastring = {
+			 "jsonobj" : {
+		 			"productcode":"001",
+			 			"batchnumber":"111",
+			 			"yearofmanufacture": "2018",
+			 			"weight":"20",
+			 			"acknowledge":"1010"
+
+			 	},
+			 	"quantity":"1000"
+			 	}
+				console.log("datastring---->",datastring)
+				alert(acknowledge)
+
+				$.ajax({
+                type: "POST", 
+                url: "http://172.16.12.34:3000/createProduct",
+                contentType: 'application/json',
+
+                data: JSON.stringify(datastring),
+
+                success: function(result) {
+                    alert("response--->",result);
 			}
+				})
+		 })	
+		})	
 	</script>
 
 <!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
 <!--===============================================================================================-->
 	<script src="vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
@@ -175,27 +218,27 @@
 <!--===============================================================================================-->
 	<script src="vendor/noui/nouislider.min.js"></script>
 	<script>
-	    var filterBar = document.getElementById('filter-bar');
+	    // var filterBar = document.getElementById('filter-bar');
 
-	    noUiSlider.create(filterBar, {
-	        start: [ 1500, 3900 ],
-	        connect: true,
-	        range: {
-	            'min': 1500,
-	            'max': 7500
-	        }
-	    });
+	    // noUiSlider.create(filterBar, {
+	    //     start: [ 1500, 3900 ],
+	    //     connect: true,
+	    //     range: {
+	    //         'min': 1500,
+	    //         'max': 7500
+	    //     }
+	    // });
 
-	    var skipValues = [
-	    document.getElementById('value-lower'),
-	    document.getElementById('value-upper')
-	    ];
+	    // var skipValues = [
+	    // document.getElementById('value-lower'),
+	    // document.getElementById('value-upper')
+	    // ];
 
-	    filterBar.noUiSlider.on('update', function( values, handle ) {
-	        skipValues[handle].innerHTML = Math.round(values[handle]);
-	        $('.contact100-form-range-value input[name="from-value"]').val($('#value-lower').html());
-	        $('.contact100-form-range-value input[name="to-value"]').val($('#value-upper').html());
-	    });
+	    // filterBar.noUiSlider.on('update', function( values, handle ) {
+	    //     skipValues[handle].innerHTML = Math.round(values[handle]);
+	    //     $('.contact100-form-range-value input[name="from-value"]').val($('#value-lower').html());
+	    //     $('.contact100-form-range-value input[name="to-value"]').val($('#value-upper').html());
+	    // });
 	</script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
