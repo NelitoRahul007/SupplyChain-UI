@@ -1,35 +1,5 @@
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-}
-footer {
-  margin: 0;
-  vertical-align: baseline;
-  font-family: Arial, Helvetica, sans-serif;
-}
-.topnav {
-  overflow: hidden;
-  background-color:black;
-}
-
-.topnav a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-</style>
-</head>
+<!DOCTYPE html>
+<html lang="en">
 <body>
   <title>supply Chain</title>
 <div class="topnav">
@@ -38,18 +8,30 @@ footer {
 </div>
 <div class="login-page">
     <div class="form">
-      <form class="register-form">
-        <input type="text" placeholder="name" id="text1"/>
-        <input type="password" placeholder="password" id="text2"/>
-        <input type="text" placeholder="email address"/>
-        <button>create</button>
-        <p class="message">Already registered? <a href="#">Sign In</a></p>
-      </form>
-      <form class="login-form">
-        <div><button type="button" value="Submit" onclick="myFunction()">Creat Product</button></div><br>
-        <div><button>Track Product</button></div><br>
-        <div><button>Order Status</button></div>
-      </form>
+      
+      
+        <div><button type="button" onclick="myFunction()">Creat Product</button></div><br>
+        <div><button  id="submit1">Available Products</button></div><br>
+        <div><button id="submit2">Order Status</button></div>
+      
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+       
+<script>
+  $(document).ready(function() {
+    console.log($.fn.jquery)
+ $("#submit1").click(function() {
+ window.location.assign("file:///home/administrator/Desktop/HTMLWorkspace/SupplyChainUi/web/manuorder.html")	
+  })	
+})
+$(document).ready(function() {
+    //console.log($.fn.jquery)
+ $("#submit2").click(function() {
+ window.location.assign("file:///home/administrator/Desktop/HTMLWorkspace/SupplyChainUi/web/manavailable.html")	
+  })	
+})
+</script>
+
+    
       <script>
         function myFunction() {
          // alert("hello")
@@ -62,21 +44,18 @@ footer {
   <footer>
     © Copyright 2018, All Rights Reserved for Nelito Systems
  </footer>
-  <script>
-      
-  $('.message a').click(function(){
-   $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
-}); 
 
-$(document).ready(function(){
-    $("button").click(function(){
-      alert("ksksks")
-        $.ajax({url: "file:///home/administrator/Desktop/HTMLWorkspace/SupplyChainUi/web/ContactFrom_v5/Endconsumer.html", success: function(result){
-            $("#div1").html(result);
-        }});
-    });
-});
-  </script>
+  
+<!-- // $(document).ready(function(){
+//     $("button").click(function(){
+//       alert("ksksks")
+//         $.ajax({url: "file:///home/administrator/Desktop/HTMLWorkspace/SupplyChainUi/web/ContactFrom_v5/Endconsumer.html", success: function(result){
+//             $("#div1").html(result);
+//         }});
+//     });
+// }); -->
+
+
   <style>
     @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
@@ -185,4 +164,36 @@ $(document).ready(function(){
     text-align: center;
     color: white;
 }
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+footer {
+  margin: 0;
+  vertical-align: baseline;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.topnav {
+  overflow: hidden;
+  background-color:black;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
   </style>
+  
+
+</body>
+</html>

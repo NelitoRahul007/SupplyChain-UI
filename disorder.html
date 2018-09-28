@@ -1,0 +1,292 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+footer {
+  margin: 0;
+  vertical-align: baseline;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.topnav {
+  overflow: hidden;
+  background-color:black;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+</style>
+</head>
+<body>
+  <title>Supply Chain</title>
+<div class="topnav">
+  <a></a>
+  
+</div>
+<h1 align="center">Available Items</h1>
+<section id="services">
+<div class="container">
+  <div class="row">
+      <div class="col-lg-3 col-md-6 text-center">
+          <div class="service-box mt-5 mx-auto">
+<table class="table" id="itemList">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Product Name</th>
+      <th>Year Of Manufacturer</th>
+      <th>Weight</th>
+      <th>Quantity</th>
+    </tr>
+     </thead>
+  </table>
+  </div>
+  </div>
+  </div>
+  </div>
+</section>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+//       function myTrim(x) {
+//     return x.replace(/^\s+|\s+$/gm,'');
+// }
+      $(document).ready(function() {
+         // alert("data")
+            getdata()
+           // alert("data2")
+          //  $("#submit1").click(function() {
+            function getdata() {
+                var datastring = {"productsOf":"distributor"}
+      $.ajax({
+              type: "POST", 
+              url: "http://172.16.12.34:3000/range",
+              contentType: 'application/json',
+
+              data: JSON.stringify(datastring),
+
+              success: function(result) {
+                  console.log(result)
+                var event_data = '';
+            $.each(result.message, function(index, value){
+                console.log("value-->",value)
+                var result1=value.Record
+                console.log("res",result1)
+                var data = new Array()
+                var hi= JSON.parse(result1.Id)
+              
+                event_data += '<tr>';
+                event_data += '<td>'+hi+'</td>';
+                event_data += '<td>'+hi.productname+'</td>';
+                event_data += '<td>'+hi.yearofmanufacture+'</td>';
+                event_data += '<td>'+hi.weight  +'</td>';
+                event_data += '<td>'+result1.Quantity+'</td>';
+
+                event_data += '</tr>';
+            });
+            $("#itemList").append(event_data);
+        },
+        error: function(d){
+            console.log("error");
+            alert("404. Please wait until the File is Loaded.");
+        }
+    });
+};
+});
+//                   console.log("response--->",result.message);
+//                   var data1 = [];
+//                    data1 = result.message
+//                   var mydata = [];
+//                     console.log("data---->", data1.length)
+//                     for (var j = 0; j < data1.length; j++ ){
+//                     var id1 = JSON.stringify(data1[j].Key);
+//                     var id = id1.valueOf();
+//                     console.log("Id---->",id)
+//                     var productName1 = JSON.stringify(data1[j].Record.JsonObj)
+//                     var productName2 = JSON.parse(productName1)
+//                     console.log("productName---->",JSON.parse (productName2))
+//                     var productDetails = JSON.parse (productName2)
+//                     var proName = productDetails.productname
+//                     console.log("rahul---->", proName )
+//                      var year = productDetails.yearofmanufacture
+//                      console.log("year--->", year)
+//                     var weight = productDetails.weight
+//                     console.log ("weight--->", weight)
+//                     var quantity = JSON.stringify(data1[j].Record.Quantity) 
+//                     console.log("quantity---->",quantity)
+//                     mydata.push({
+//                        "id": id,
+//                        "proName": proName,
+//                        "year" : year,
+//                        "weight": weight,
+//                        "quantity" : quantity
+
+//                     });
+
+//                      var tbl = $("<table/>").attr("id", "itemList");
+//                     $("#services").append(tbl);
+//                    for (var i = 0; i < j; i++) {
+//                       console.log("dataaaa---->", mydata.length)
+//                         var tr = "<tr>";
+//                         var td1 = "<td> " + mydata[i]["id"] + "</td>";
+//                         var td2 = "<td> " + mydata[i]["proName"] + "</td>";
+//                         var td3 = "<td> " + mydata[i]["year"] + "</td>";
+//                         var td4 = "<td> " + mydata[i]["weight"] + "</td>";
+//                         var td5 = "<td> " + mydata[i]["quantity"] + "</td></tr>";
+//                         document.getElementById("td1").innerHTML = td1;
+//                         document.getElementById("td2").innerHTML = td2;
+//                         document.getElementById("td3").innerHTML = td3;
+//                         document.getElementById("td4").innerHTML = td4;
+//                         document.getElementById("td5").innerHTML = td5;
+//                         $("#itemList").append();
+//     }
+//                     }
+        //       }
+      // })
+    // }
+//  })
+
+		 	
+			
+  </script>
+
+  
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+  .login-page {
+    width: 360px;
+    padding: 8% 0 0;
+    margin: auto;
+  }
+  .form {
+    position: relative;
+    z-index: 1;
+    background: black;
+    opacity: 0.8;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+    max-width: 360px;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  }
+  .form input {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+  .form button {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background:darkgreen;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+  }
+  .form button:hover,.form button:active,.form button:focus {
+    background: #43A047;
+    
+  }
+  .form .message {
+    margin: 15px 0 0;
+    color: #b3b3b3;
+    font-size: 12px;
+  }
+  
+    .form .message a {
+    color: #4CAF50;
+    text-decoration: none;
+  }
+  .form .register-form {
+    display: none;
+  }
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  .container:before, .container:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  .container .info {
+    margin: 50px auto;
+    text-align: center;
+  }
+  .container .info h1 {
+    margin: 0 0 15px;
+    padding: 0;
+    font-size: 36px;
+    font-weight: 300;
+    color: #1a1a1a;
+  }
+  .container .info span {
+    color: #4d4d4d;
+    font-size: 12px;
+  }
+  .container .info span a {
+    color: #000000;
+    text-decoration: none;
+  }
+  .container .info span .fa {
+    color: #EF3B3A;
+  }
+  body {
+    background-color: #c2e9fb;
+    height: 400px;
+    width: 100%;
+      
+  }
+
+  footer {
+    background-color:black;
+    padding: 10px;
+    text-align: center;
+    color: white;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 300%;
+    margin-left: -100%;
+    margin-top: 19%
+}
+
+td, th {
+    border: 1px solid #111010;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+  </style>

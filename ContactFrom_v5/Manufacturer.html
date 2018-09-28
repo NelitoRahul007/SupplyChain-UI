@@ -48,8 +48,8 @@
 					<input class="input100" type="text" name="phone" placeholder="Enter RecieverId">
 				</div> -->
 				<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" >
-					<span class="label-input100">Product Code *</span>
-					<input class="input100" type="text"  placeholder="Product Code " id="productcode" >
+					<span class="label-input100">Product Name *</span>
+					<input class="input100" type="text"  placeholder="Product Name " id="productcode" >
 				</div>
 				<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" >
 					<span class="label-input100">Batch Number *</span>
@@ -123,7 +123,7 @@
 				<div class="container-contact100-form-btn">
 					<button class="contact100-form-btn" id="submit">
 						<span>
-							Submitttt
+							Submit
 							<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
 						</span>
 					</button>
@@ -150,31 +150,30 @@
 				console.log("weight---->", weight)
 				var acknowledge = $("#acknowledge").val();
 				console.log("acknowledge---->", acknowledge)
-			 	var datastring = {
-			 "jsonobj" : {
-		 			"productcode":"001",
-			 			"batchnumber":"111",
-			 			"yearofmanufacture": "2018",
-			 			"weight":"20",
-			 			"acknowledge":"1010"
+				var datastring = {
+  								  "jsonobj": {
+    										  "productname": "Chairs",//productcode,
+    										  "batchnumber": "1010",//batchnumber,
+    										  "yearofmanufacture":"2016", //yearofmanufacture,
+    										  "weight": "2000kg",
+    										  "aknowledge":"abcd" //acknowledge
+  											},
+  											  "quantity": "200"//quantity
+}
+      console.log("datastring---->",datastring)
+      alert(acknowledge)
 
-			 	},
-			 	"quantity":"1000"
-			 	}
-				console.log("datastring---->",datastring)
-				alert(acknowledge)
+      $.ajax({
+              type: "POST", 
+              url: "http://172.16.12.34:3000/createProduct",
+              contentType: 'application/json',
 
-				$.ajax({
-                type: "POST", 
-                url: "http://172.16.12.34:3000/createProduct",
-                contentType: 'application/json',
+              data: JSON.stringify(datastring),
 
-                data: JSON.stringify(datastring),
-
-                success: function(result) {
-                    alert("response--->",result);
-			}
-				})
+              success: function(result) {
+                  alert(result.message);
+    }
+      })
 		 })	
 		})	
 	</script>
