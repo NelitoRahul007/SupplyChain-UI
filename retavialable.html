@@ -74,20 +74,20 @@ footer {
 //       function myTrim(x) {
 //     return x.replace(/^\s+|\s+$/gm,'');
 // }
-var hi
       $(document).ready(function() {
          // alert("data")
             getdata()
            // alert("data2")
           //  $("#submit1").click(function() {
             function getdata() {
-                var datastring = {"key":"Manufacturer"}
+                var datastring = {"key":"retailer"}
     //   $.ajax({
     //           type: "POST", 
     //           url:"<td>"  + "<button>"+ "Approve" +"</button>" 
     //                                       + "<button>"+ "Reject" +"</button>" + "</td></tr>" "http://172.16.12.34:3000/requestedProduct",
     //           cont"<td>"  + "<button>"+ "Approve" +"</button>" 
     //                                       + "<button>"+ "Reject" +"</button>" + "</td></tr>"entType: 'application/json',
+"<td>"  + "<button>"+ "Approve" +"</button>" 
     //                                       + "<button>"+ "Reject" +"</button>" + "</td></tr>"
     //           data"<td>"  + "<button>"+ "Approve" +"</button>" 
     //                                       + "<button>"+ "Reject" +"</button>" + "</td></tr>": JSON.stringify(datastring),
@@ -161,7 +161,7 @@ var hi
                 console.log(value)
                 var result1=value.JsonObj
                 var data = new Array()
-                hi= JSON.parse(result1)
+                var hi= JSON.parse(result1)
                 for (i=0; i<=0; i++){
                 event_data += '<tr>';
                 event_data += '<td id='+i+' value='+""+'>'+value.Id+'</td>';
@@ -188,7 +188,7 @@ $(document).ready(function(){
         $("#approve").click(function(){
          var data =   $("input:text").val();
          alert (data)
-         var datastring = {"key":"Manufacturer"}
+         var datastring = {"key":"retailer"}
             $.ajax({
               type: "POST", 
               url: "http://172.16.12.34:3000/requestedProduct",
@@ -206,6 +206,7 @@ $(document).ready(function(){
                     var requestId = result.message[i].RequestId
                     var requestedFrom = result.message[i].RequestedFrom
                     var newOwner = result.message[i].Requester
+                    //var decission = result.message[i].Status
                     var jsonObj = result.message[i].JsonObj
                     var datastring1 = {
                                    "id":id,

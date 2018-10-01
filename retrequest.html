@@ -37,6 +37,10 @@ footer {
   
 </div>
 <h1 align="center">Available Items</h1>
+<p align="center">Please Enter Details to Order</p>
+<input type="text" id="text" name="user" placeholder="Enter Id"><br><br>
+<input type="text" id="text1" name="user" placeholder="Quantity"><br>
+<button id="order">Order</button>
 <section id="services">
 <div class="container">
   <div class="row">
@@ -107,6 +111,29 @@ footer {
     });
 };
 });
+$(document).ready(function(){
+        $("#order").click(function(){
+         var Id =   $("#text").val();
+         var Quantity =   $("#text1").val();
+         alert (Quantity)
+         var datastring = {"id":Id,
+                           "requestedFrom":"distributer",
+                           "quantity":Quantity,
+                           "requester":"retailer"
+                           }
+            $.ajax({
+              type: "POST", 
+              url: "http://172.16.12.34:3000/request",
+              contentType: 'application/json',
+
+              data: JSON.stringify(datastring),
+
+              success: function(result) {
+                  console.log("result---->",result.status)
+}
+})
+})
+})
 //                   console.log("response--->",result.message);
 //                   var data1 = [];
 //                    data1 = result.message
@@ -291,4 +318,16 @@ td, th {
 tr:nth-child(even) {
     background-color: #dddddd;
 }
+input{
+ width: 100px;
+ margin-left: 400px;
+ height: 30px;
+}
+
+button{
+ width: 70px;
+ margin-left: 400px;
+ height: 30px;
+}
+
   </style>

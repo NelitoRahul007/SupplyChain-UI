@@ -37,6 +37,10 @@ footer {
   
 </div>
 <h1 align="center">Available Items</h1>
+<p align="center">Please Enter Details to Order</p>
+<input type="text" id="text" name="user" placeholder="Enter Id"><br><br>
+<input type="text" id="text1" name="user" placeholder="Quantity"><br>
+<button id="order">Order</button>
 <section id="services">
 <div class="container">
   <div class="row">
@@ -69,7 +73,7 @@ footer {
            // alert("data2")
           //  $("#submit1").click(function() {
             function getdata() {
-                var datastring = {"productsOf":"distributor"}
+                var datastring = {"productsOf":"Manufacturer"}
       $.ajax({
               type: "POST", 
               url: "http://172.16.12.34:3000/range",
@@ -81,16 +85,13 @@ footer {
                   console.log(result)
                 var event_data = '';
             $.each(result.message, function(index, value){
-                console.log("value-->",value)
+                console.log(value)
                 var result1=value.Record
-                console.log("res",result1)
                 var data = new Array()
-                var id= JSON.parse(result1.Id)
                 var hi= JSON.parse(result1.JsonObj)
-                console.log("hi",hi)
               
                 event_data += '<tr>';
-                event_data += '<td>'+id+'</td>';
+                event_data += '<td>'+result1.Id+'</td>';
                 event_data += '<td>'+hi.productname+'</td>';
                 event_data += '<td>'+hi.yearofmanufacture+'</td>';
                 event_data += '<td>'+hi.weight  +'</td>';
@@ -107,6 +108,30 @@ footer {
     });
 };
 });
+
+$(document).ready(function(){
+        $("#order").click(function(){
+         var Id =   $("#text").val();
+         var Quantity =   $("#text1").val();
+         alert (Quantity)
+         var datastring = {"id":Id,
+                           "requestedFrom":"Manufacturer",
+                           "quantity":Quantity,
+                           "requester":"distributor"
+                           }
+            $.ajax({
+              type: "POST", 
+              url: "http://172.16.12.34:3000/request",
+              contentType: 'application/json',
+
+              data: JSON.stringify(datastring),
+
+              success: function(result) {
+                  console.log("result---->",result.status)
+}
+})
+})
+})
 //                   console.log("response--->",result.message);
 //                   var data1 = [];
 //                    data1 = result.message
@@ -290,5 +315,17 @@ td, th {
 
 tr:nth-child(even) {
     background-color: #dddddd;
+}
+
+input{
+ width: 100px;
+ margin-left: 400px;
+ height: 30px;
+}
+
+button{
+ width: 70px;
+ margin-left: 400px;
+ height: 30px;
 }
   </style>
