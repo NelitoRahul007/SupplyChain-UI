@@ -33,7 +33,7 @@ footer {
 <body>
   <title>Supply Chain</title>
 <div class="topnav">
-  <a>Hello,Rahul</a>
+  <a>Hello,Enduser</a>
   
 </div>
 <div class="login-page">
@@ -48,7 +48,7 @@ footer {
       <form class="login-form">
         <div><button type="button" value="Submit" onclick="myFunction()">Place Order</button></div><br>
         <div><button type="button" value="Submit" onclick="myFunction2()">Track Products</button></div><br>
-        <div><button>Requested Products</button></div>
+        <div><button type="button" value="Submit" onclick="myFunction3()">Logout</button></div>
       </form>
       <script>
         function myFunction() {
@@ -64,6 +64,12 @@ footer {
         }
         function myFunction2() {
         window.location.assign("file:///home/administrator/Desktop/HTMLWorkspace/SupplyChainUi/web/endorder.html")
+        }
+
+        function myFunction3() {
+         // alert("hello")
+          window.location.assign("file:///home/administrator/Desktop/HTMLWorkspace/SupplyChainUi/web/home.html")
+           
         }
         </script>
     </div>

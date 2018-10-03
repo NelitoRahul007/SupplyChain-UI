@@ -38,10 +38,10 @@ footer {
 </div>
 <h1 align="center">Approve/Reject</h1>
   <p align="center">Enter Id to Approve/Reject</p>
- <input type="text" name="user" placeholder="enter Id"><br>
+  <input type="text" name="user" placeholder="enter Id"><br><br>
 
 <button id="approve">Approve</button>
-<button>Reject</button>
+<button id="reject">Reject</button>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <section id="services">
@@ -187,7 +187,7 @@ footer {
 $(document).ready(function(){
         $("#approve").click(function(){
          var data =   $("input:text").val();
-         alert (data)
+       //  alert (data)
          var datastring = {"key":"distributer"}
             $.ajax({
               type: "POST", 
@@ -208,6 +208,10 @@ $(document).ready(function(){
                     var newOwner = result.message[i].Requester
                     //var decission = result.message[i].Status
                     var jsonObj = result.message[i].JsonObj
+                    jsonObj["distributerInvoice"] = parseInt(Math.floor( Math.random()*100000).toString().substring(0,3));
+                    jsonObj["distributerInvoicedate"] =  new Date().toJSON().slice(0,10).replace(/-/g,'/');
+                    jsonObj["distributerLotnumber"] = Math.floor(1000 + Math.random() * 9000);
+                    console.log("jsonObj---->",jsonObj)
                     var datastring1 = {
                                    "id":id,
                                    "jsonObj":jsonObj,
@@ -225,7 +229,8 @@ $(document).ready(function(){
               data: JSON.stringify(datastring1),
 
               success: function(result) {
-                console.log("result-->",result)
+                alert("Approved Sucessfully")
+                window.location.assign("file:///home/administrator/Desktop/HTMLWorkspace/SupplyChainUi/web/distributerhome.html")
                    
                   }
                 })
@@ -367,14 +372,24 @@ tr:nth-child(even) {
 }
 
 input{
- width: 100px;
+ width: 150px;
  margin-left: 400px;
+ margin-top: -10px;
  height: 30px;
 }
 
-button{
- width: 70px;
- margin-left: 400px;
+#approve{
+ width: 109px;
+ margin-left: 360px;
  height: 30px;
+ letter-spacing: 4px;
+}
+
+#reject{
+ width: 109px;
+ margin-left: 10px;
+ margin-bottom: 10px;
+ height: 30px;
+ letter-spacing: 4px;
 }
   </style>

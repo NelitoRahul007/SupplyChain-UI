@@ -38,8 +38,8 @@ footer {
 </div>
 <h1 align="center">Available Items</h1>
 <p align="center">Please Enter Details to Order</p>
-<input type="text" id="text" name="user" placeholder="Enter Id"><br><br>
-<input type="text" id="text1" name="user" placeholder="Quantity"><br>
+<input type="text" id="text" name="user" placeholder="Enter Id"><br><input type="text" id="text1" name="user" placeholder="Quantity"><br>
+<br>
 <button id="order">Order</button>
 <section id="services">
 <div class="container">
@@ -115,7 +115,7 @@ $(document).ready(function(){
         $("#order").click(function(){
          var Id =   $("#text").val();
          var Quantity =   $("#text1").val();
-         alert (Quantity)
+       //  alert (Quantity)
          var datastring = {"id":Id,
                            "requestedFrom":"distributer",
                            "quantity":Quantity,
@@ -129,7 +129,8 @@ $(document).ready(function(){
               data: JSON.stringify(datastring),
 
               success: function(result) {
-                  console.log("result---->",result.status)
+                  alert("Your order is placed Sucessfully")
+                  window.location.assign("file:///home/administrator/Desktop/HTMLWorkspace/SupplyChainUi/web/retailerhome.html")
 }
 })
 })
@@ -318,15 +319,22 @@ td, th {
 tr:nth-child(even) {
     background-color: #dddddd;
 }
-input{
+#text{
  width: 100px;
- margin-left: 400px;
+ margin-left: 360px;
+ height: 30px;
+}
+
+#text1{
+ width: 100px;
+ margin-left: 490px;
+ margin-top: -30px;
  height: 30px;
 }
 
 button{
  width: 70px;
- margin-left: 400px;
+ margin-left: 438px;
  height: 30px;
 }
 
