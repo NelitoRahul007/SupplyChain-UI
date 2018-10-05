@@ -63,6 +63,7 @@ footer {
 //       function myTrim(x) {
 //     return x.replace(/^\s+|\s+$/gm,'');
 // }
+
       $(document).ready(function() {
          // alert("data")
             getdata()
@@ -74,7 +75,7 @@ footer {
               type: "POST", 
               url: "http://172.16.12.34:3000/range",
               contentType: 'application/json',
-
+  
               data: JSON.stringify(datastring),
 
               success: function(result) {
@@ -99,7 +100,7 @@ footer {
         },
         error: function(d){
             console.log("error");
-            alert("404. Please wait until the File is Loaded.");
+            alert("No Data to display");
         }
     });
 };
