@@ -149,7 +149,7 @@ footer {
 
     $.ajax({
               type: "POST", 
-              url: "http://172.16.12.34:3000/requestedProduct",
+              url: "http://localhost:3000/requestedProduct",
               contentType: 'application/json',
 
               data: JSON.stringify(datastring),
@@ -191,7 +191,7 @@ $(document).ready(function(){
          var datastring = {"key":"distributer"}
             $.ajax({
               type: "POST", 
-              url: "http://172.16.12.34:3000/requestedProduct",
+              url: "http://localhost:3000/requestedProduct",
               contentType: 'application/json',
 
               data: JSON.stringify(datastring),
@@ -223,14 +223,14 @@ $(document).ready(function(){
                     }
                     $.ajax({
               type: "POST", 
-              url: "http://172.16.12.34:3000/transferProduct",
+              url: "http://localhost:3000/transferProduct",
               contentType: 'application/json',
 
               data: JSON.stringify(datastring1),
 
               success: function(result) {
                 alert("Approved Sucessfully")
-                window.location.assign("file:///home/administrator/Desktop/HTMLWorkspace/SupplyChainUi/web/distributerhome.html")
+                window.location.assign("file:///home/rahul/Desktop/HTMLWorkspace/SupplyChain-UI/distributerhome.html")
                    
                   }
                 })

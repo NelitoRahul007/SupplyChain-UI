@@ -75,7 +75,7 @@ footer {
                 var datastring = {"productsOf":"retailer"}
       $.ajax({
               type: "POST", 
-              url: "http://172.16.12.34:3000/range",
+              url: "http://localhost:3000/range",
               contentType: 'application/json',
 
               data: JSON.stringify(datastring),
@@ -123,14 +123,14 @@ $(document).ready(function(){
                            }
             $.ajax({
               type: "POST", 
-              url: "http://172.16.12.34:3000/request",
+              url: "http://localhost:3000/request",
               contentType: 'application/json',
 
               data: JSON.stringify(datastring),
 
               success: function(result) {
                    alert("Order Sucessfull")
-                   window.location.assign("file:///home/administrator/Desktop/HTMLWorkspace/SupplyChainUi/web/enduserhome.html")
+                   window.location.assign("file:///home/rahul/Desktop/HTMLWorkspace/SupplyChain-UI/enduserhome.html")
 }
 })
 })

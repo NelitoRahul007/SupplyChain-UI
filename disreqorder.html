@@ -76,7 +76,7 @@ footer {
                 var datastring = {"productsOf":"Manufacturer"}
       $.ajax({
               type: "POST", 
-              url: "http://172.16.12.34:3000/range",
+              url: "http://localhost:3000/range",
               contentType: 'application/json',
 
               data: JSON.stringify(datastring),
@@ -121,14 +121,14 @@ $(document).ready(function(){
                            }
             $.ajax({
               type: "POST", 
-              url: "http://172.16.12.34:3000/request",
+              url: "http://localhost:3000/request",
               contentType: 'application/json',
 
               data: JSON.stringify(datastring),
 
               success: function(result) {
                   alert("Your Order has been placed")
-                  window.location.assign("file:///home/administrator/Desktop/HTMLWorkspace/SupplyChainUi/web/distributerhome.html")
+                  window.location.assign("file:///home/rahul/Desktop/HTMLWorkspace/SupplyChain-UI/distributerhome.html")
 }
 })
 })
