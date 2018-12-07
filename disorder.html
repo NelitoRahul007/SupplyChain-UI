@@ -69,32 +69,31 @@ footer {
            // alert("data2")
           //  $("#submit1").click(function() {
             function getdata() {
-                var datastring = {"productsOf":"distributor"}
-      $.ajax({
+                var datastring = {"productsOf":"Manufacturer"}
+                $.ajax({
               type: "POST", 
               url: "http://localhost:3000/range",
               contentType: 'application/json',
-
+  
               data: JSON.stringify(datastring),
 
               success: function(result) {
                   console.log(result)
                 var event_data = '';
             $.each(result.message, function(index, value){
-                console.log("value-->",value)
+                console.log(value)
                 var result1=value.Record
-                console.log("res",result1)
-                var data = new Array()
                 var id= JSON.parse(result1.Id)
+                console.log("id",id)
+                var data = new Array()
                 var hi= JSON.parse(result1.JsonObj)
-                console.log("hi",hi)
               
                 event_data += '<tr>';
                 event_data += '<td>'+id+'</td>';
                 event_data += '<td>'+hi.productname+'</td>';
                 event_data += '<td>'+hi.yearofmanufacture+'</td>';
                 event_data += '<td>'+hi.weight  +'</td>';
-                event_data += '<td>'+result1.Dispatchedto[0].Quantity+'</td>';
+                event_data += '<td>'+result1.Quantity+'</td>';
 
                 event_data += '</tr>';
             });

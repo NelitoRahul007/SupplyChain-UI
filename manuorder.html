@@ -84,11 +84,12 @@ footer {
             $.each(result.message, function(index, value){
                 console.log(value)
                 var result1=value.Record
+                var id= JSON.parse(result1.Id)
                 var data = new Array()
                 var hi= JSON.parse(result1.JsonObj)
               
                 event_data += '<tr>';
-                event_data += '<td>'+result1.Id+'</td>';
+                event_data += '<td>'+value.Key+'</td>';
                 event_data += '<td>'+hi.productname+'</td>';
                 event_data += '<td>'+hi.yearofmanufacture+'</td>';
                 event_data += '<td>'+hi.weight  +'</td>';
